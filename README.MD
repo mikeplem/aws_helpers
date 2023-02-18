@@ -1,3 +1,4 @@
+```shell
 aws-profile-list() {
   cat ~/.aws/config | grep '^\[profile ' | grep -v '^#' | sed -e 's/^\[profile //;s/]$//'
 }
@@ -259,3 +260,4 @@ function rds_proxy_port {
     --document-name AWS-StartPortForwardingSessionToRemoteHost \
     --parameters host="${RDSID}",portNumber="${4}",localPortNumber="${3}" || echo "Instance not found"
 }
+```
