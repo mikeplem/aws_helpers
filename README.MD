@@ -249,8 +249,7 @@ function rds_proxy_port {
 
   EC2ID=$(aws ec2 describe-instances --filters "${filter}" Name=instance-state-name,Values=running --query 'Reservations[].Instances[].InstanceId' --output text)
 
-  RDSARN=$(aws resourcegroupstaggingapi get-resources --resource-type-filters rds:db --tag-filters "Key=Name,Values=${2}" --query 'ResourceTagMappingList[].ResourceARN' --output text
-)
+  RDSARN=$(aws resourcegroupstaggingapi get-resources --resource-type-filters rds:db --tag-filters "Key=Name,Values=${2}" --query 'ResourceTagMappingList[].ResourceARN' --output text)
 
   RDSID=$(aws rds describe-db-instances --filters "Name=db-instance-id,Values=${RDSARN}" | jq -r '.DBInstances[].Endpoint.Address')
 
